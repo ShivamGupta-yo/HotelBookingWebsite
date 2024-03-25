@@ -166,8 +166,8 @@ session_regenerate_id(true);
                     </div>
                 </div>
 
- 
-                <!-- Contact Modal -->
+
+                <!-- Contact details Modal -->
                 <div class="modal fade" id="contacts-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
                     <div class="modal-dialog modal-lg">
@@ -225,7 +225,7 @@ session_regenerate_id(true);
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">Iframe Src:</label>
-                                                    <input type="text" name="iframe" id="iframe_inp" class="form-control" readonly >
+                                                    <input type="text" name="iframe" id="iframe_inp" class="form-control" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,6 +241,57 @@ session_regenerate_id(true);
                         </form>
                     </div>
                 </div>
+                <!-- Management Team section -->
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class=" card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Management Team </h5>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#team-s">
+                                <i class="bi bi-plus-square"></i> ADD
+                            </button>
+                        </div>
+
+                        <div class="row" id="team-data">
+                            
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!-- Management  team Modal -->
+                <div class="modal fade" id="team-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form id="team_s_form">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5">Add Member</h1>
+
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Name:</label>
+                                        <input type="text" name="member_name" id="member_name_inp" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label fw-bold">Picture:</label>
+                                        <input type="file" name="member_picture" id="member_picture_inp" accept=".jpg, .png, .webp, .jpeg" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button onclick="" type="button" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
+
+                                    <button type="submit" onclick="member_name.value = '', member_picture.value=''" class="btn custom-bg text-white shadow-none">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
 
 
 
@@ -259,6 +310,12 @@ session_regenerate_id(true);
         let site_about_inp = document.getElementById('site_about_inp');
 
         let contacts_s_form = document.getElementById('contacts_s_form');
+
+        let team_s_form = document.getElementById('team_s_form');
+        let member_name_inp = document.getElementById('member_name_inp');
+        let member_picture_inp = document.getElementById('member_picture_inp');
+
+
 
         general_s_form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -324,7 +381,7 @@ session_regenerate_id(true);
 
             xhr.onload = function() {
 
-               
+
                 var myModal = document.getElementById('general-s');
                 var modal = bootstrap.Modal.getInstance(myModal);
                 modal.hide();
@@ -388,43 +445,43 @@ session_regenerate_id(true);
                     document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
                 }
                 iframe.src = contacts_data[9];
-                    contacts_inp(contacts_data);
+                contacts_inp(contacts_data);
 
             }
             xhr.send('get_contacts');
         }
 
 
-        function contacts_inp(data){
-            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'insta_inp', 'git_inp', 'ln_inp','iframe_inp'];
+        function contacts_inp(data) {
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'insta_inp', 'git_inp', 'ln_inp', 'iframe_inp'];
 
-            for(i=0;i<contacts_inp_id.length;i++){
-                document.getElementById(contacts_inp_id[i]).value = data[i+1];
+            for (i = 0; i < contacts_inp_id.length; i++) {
+                document.getElementById(contacts_inp_id[i]).value = data[i + 1];
             }
 
         }
 
 
-        contacts_s_form.addEventListener('submit',function(e){
+        contacts_s_form.addEventListener('submit', function(e) {
             e.preventDefault();
             upd_contacts();
         });
 
-        function upd_contacts(){
-            let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'insta', 'git', 'ln','iframe'];
-            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'insta_inp', 'git_inp', 'ln_inp','iframe_inp'];
+        function upd_contacts() {
+            let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'insta', 'git', 'ln', 'iframe'];
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'insta_inp', 'git_inp', 'ln_inp', 'iframe_inp'];
 
-            let data_str ="";
-            for(i=0;i<index.length;i++){
-                data_str+=index[i]+"="+document.getElementById(contacts_inp_id[i]).value + '&';
+            let data_str = "";
+            for (i = 0; i < index.length; i++) {
+                data_str += index[i] + "=" + document.getElementById(contacts_inp_id[i]).value + '&';
             }
-            data_str+='upd_contacts';
+            data_str += 'upd_contacts';
             let xhr = new XMLHttpRequest();
             xhr.open('POST', "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 
-            xhr.onload = function(){
+            xhr.onload = function() {
 
                 var myModal = document.getElementById('contacts-s');
                 var modal = bootstrap.Modal.getInstance(myModal);
@@ -438,7 +495,7 @@ session_regenerate_id(true);
                 } else {
                     alert('error', 'No changes made!');
                 }
-              
+
             }
             xhr.send(data_str);
         }
@@ -446,10 +503,86 @@ session_regenerate_id(true);
 
 
 
+        team_s_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            add_member();
+        })
+
+        function add_member() {
+            let data = new FormData();
+            data.append('name', member_name_inp.value);
+            data.append('picture', member_picture_inp.files[0]);
+            data.append('add_member', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/settings_crud.php", true);
+
+
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+
+
+                var myModal = document.getElementById('team-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if (this.responseText == "inv_img") {
+                    alert('error', 'Only jpg,jpeg and png images are allowed!');
+
+                } else if (this.responseText == 'inv_size') {
+                    alert('error', 'image should be less than 2MB!');
+
+                } else if (this.responseText == 'upd_failed') {
+                    alert('error', 'Failed to upload image!');
+                } else {
+                    alert('success', 'New member Added!');
+                    member_name_inp.value = '';
+                    member_picture_inp.value = '';
+                    get_members();
+
+                }
+            }
+
+            xhr.send(data);
+
+        }
+
+        function get_members(){
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+           
+            xhr.onload = function() {
+               document.getElementById('team-data').innerHTML = this.responseText;
+            }
+            xhr.send('get_members');
+        }
+
+
+
+        function rem_member(val){
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            
+            xhr.onload = function() {
+                if(this.responseText==1){
+                    alert('success','Member Removed!');
+                    get_members();
+                }else{
+                    alert('error','Server down!');
+                }
+            }
+            xhr.send('rem_member='+val);
+        }
 
         window.onload = function() {
             get_general();
             get_contacts();
+            get_members();
         }
     </script>
 </body>
