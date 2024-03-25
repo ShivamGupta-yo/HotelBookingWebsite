@@ -1,6 +1,16 @@
+<?php 
+require('admin/inc/db_config.php');
+require('admin/inc/essentials.php');
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
+$contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+$values = [1];
+$contact_r = mysqli_fetch_assoc(select($contact_q,$values,'i'));
+
+
+?>
+
+<nav id = "nav-bar" class="navbar navbar-expand-lg bg-body-tertiary bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand mr-5 fw-bold fs-3 h-font" href="index.php">Room Rover</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link  me-2"  href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-2" href="rooms.php">Rooms</a>

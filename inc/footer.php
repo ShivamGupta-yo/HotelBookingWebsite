@@ -21,13 +21,20 @@
             <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
             <br />
         </div>
+
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Follow Us</h5>
-            <a href="https://www.instagram.com/ankitsh037/" class="d-inline-block mb-2 text-dark text-decoration-none">
+            <a href="<?php 
+          echo $contact_r['insta'];
+          ?>" class="d-inline-block mb-2 text-dark text-decoration-none">
                 <i class="bi bi-instagram me-1"></i> Instagram </a><br />
-            <a href="https://github.com/ShivamGupta-yo" class="d-inline-block mb-2 text-dark text-decoration-none">
+            <a href="<?php 
+          echo $contact_r['git'];
+          ?>" class="d-inline-block mb-2 text-dark text-decoration-none">
                 <i class="bi bi-github me-1"></i> Github </a><br />
-            <a href="https://www.linkedin.com/in/shivam-gupta-5a996a20b/"
+            <a href="<?php 
+          echo $contact_r['ln'];
+          ?>"
                 class="d-inline-block text-dark text-decoration-none">
                 <i class="bi bi-linkedin me-1 text-dark "></i> LinkedIn </a><br />
         </div>
@@ -46,3 +53,19 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+        function setActive(){
+           let navbar =document.getElementById('nav-bar');
+            let a_tags = navbar.getElementsByTagName('a');
+
+            for(i=0;i<a_tags.length;i++){
+                let file = a_tags[i].href.split('/').pop();
+                let file_name = file.split('.')[0];
+                if(document.location.href.indexOf(file_name) >= 0){
+                a_tags[i].classList.add('active');
+                }
+            }
+        }
+        setActive();
+    </script>

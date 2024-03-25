@@ -195,11 +195,11 @@ session_regenerate_id(true);
                                                     <label class="form-label fw-bold">Phone Numbers (with country code):</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn1" id="pn1_inp" class="form-control" required>
+                                                        <input type="number" name="pn1" id="pn1_inp" class="form-control" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn2" id="pn2_inp" class="form-control">
+                                                        <input type="number" name="pn2" id="pn2_inp" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
@@ -253,7 +253,7 @@ session_regenerate_id(true);
                         </div>
 
                         <div class="row" id="team-data">
-                            
+
                         </div>
 
 
@@ -284,7 +284,7 @@ session_regenerate_id(true);
                                 <div class="modal-footer">
                                     <button onclick="" type="button" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
 
-                                    <button type="submit" onclick="member_name.value = '', member_picture.value=''" class="btn custom-bg text-white shadow-none">Submit</button>
+                                    <button type="submit" onclick="" class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -548,35 +548,35 @@ session_regenerate_id(true);
 
         }
 
-        function get_members(){
+        function get_members() {
             let xhr = new XMLHttpRequest();
             xhr.open('POST', "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-           
+
             xhr.onload = function() {
-               document.getElementById('team-data').innerHTML = this.responseText;
+                document.getElementById('team-data').innerHTML = this.responseText;
             }
             xhr.send('get_members');
         }
 
 
 
-        function rem_member(val){
+        function rem_member(val) {
             let xhr = new XMLHttpRequest();
             xhr.open('POST', "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            
+
             xhr.onload = function() {
-                if(this.responseText==1){
-                    alert('success','Member Removed!');
+                if (this.responseText == 1) {
+                    alert('success', 'Member Removed!');
                     get_members();
-                }else{
-                    alert('error','Server down!');
+                } else {
+                    alert('error', 'Server down!');
                 }
             }
-            xhr.send('rem_member='+val);
+            xhr.send('rem_member=' + val);
         }
 
         window.onload = function() {
