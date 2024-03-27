@@ -1,5 +1,8 @@
 <?php 
 
+$name_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
+$values = [1];
+$name_r = mysqli_fetch_assoc(select($name_q,$values,'i'));
 
 
 ?>
@@ -8,9 +11,13 @@
 <div class="container-fluid bg-white mt-5">
     <div class="row">
         <div class="col-lg-4 p-4">
-            <h3 class="h-font fw-bold fs-3 mb-2">Room Rover</h3>
+            <h3 class="h-font fw-bold fs-3 mb-2"> <?php 
+              echo $name_r['site_title'];
+              ?></h3>
             <p>
-               Shivam
+              <?php 
+              echo $name_r['site_about'];
+              ?>
             </p>
         </div>
         <div class="col-lg-4 p-4">
