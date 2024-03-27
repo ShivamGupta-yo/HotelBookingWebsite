@@ -1,4 +1,8 @@
+
+
+
 <div class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between sticky-top">
+
     <h3 class="mb-0 h-font">Room Rover</h3>
     <a href="logout.php" class="btn btn-light btn-sm">LOG OUT</a>
 </div>
@@ -17,10 +21,13 @@
                         <a class="nav-link  text-white" aria-current="page" href="dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="rooms.php">Rooms</a>
+                        <a class="nav-link text-white" href="features_facilities.php">Features & Facilities</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="users.php">Users</a>
+                        <a class="nav-link text-white" href="user_queries.php">User Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="carousel.php">Carousel</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="settings.php">Settings</a>

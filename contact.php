@@ -94,25 +94,25 @@
       <div class="col-lg-6 col-md-6 px-4">
 
         <div class=" bg-white shadow rounded p-4  ">
-          <form>
+          <form method="POST">
             <h5>Send a message</h5>
             <div class="mt-4">
               <label class="form-label" style="font-weight:500;">Name: </label>
-              <input type="text" class="form-control" />
+              <input name = "name" type="text" class="form-control" required/>
             </div>
             <div class="mt-4">
               <label class="form-label" style="font-weight:500;">Email: </label>
-              <input type="email" class="form-control" />
+              <input type="email" class="form-control" name="email" required/>
             </div>
             <div class="mt-4">
               <label class="form-label" style="font-weight:500;">Subject: </label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" name="subject"  required/>
             </div>
             <div class="mt-4">
               <label class="form-label" style="font-weight:500;">Message: </label>
-              <textarea class="form-control" rows="5" style="resize:none;"></textarea>
+              <textarea class="form-control" rows="5" style="resize:none;" name="message" required></textarea>
             </div>
-            <button type="submit" class="btn text-white custom-bg mt-3">SEND</button>
+            <button type="submit" name="send" class="btn text-white custom-bg mt-3">SEND</button>
           </form>
 
         </div>
@@ -120,8 +120,25 @@
 
       </div>
     </div>
+  </div>
 
 
+  <?php 
+  if(isset($_POST['send'])){
+$frm_data = filteration($_POST);
+
+$q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?,?,?,?)";
+$values = [$frm_data['name'],$frm_data['email'],$frm_data['subject'],$frm_data['message']];
+
+$res = insert($q,$values,"ssss");
+if($res==1){
+  alert('success','Message Sent Successfully!');
+
+}else{
+  alert('error', 'Error Sending Message!');
+}
+  }
+  ?>
 
 
 

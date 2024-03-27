@@ -2,12 +2,14 @@
 // front end upload data
 define('SITE_URL','http://127.0.0.1/Hotelbookingwebsite/');
 define('ABOUT_IMG_PATH',SITE_URL.'images/about/');
+define('CAROUSEL_IMG_PATH',SITE_URL.'images/carousel/');
 
 
 
 // backend image upload process need this data
 define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/HotelBookingWebsite/images/');
 define('ABOUT_FOLDER','about/');
+define('CAROUSEL_FOLDER','carousel/');
 
 function adminLogin()
 {
@@ -52,7 +54,7 @@ function uploadImage($image,$folder)
     return 'inv_img'; //invalid image format
 
   }
-  elseif(($image['size'])/(1024*1024)>2){
+  elseif(($image['size'])/(1024*1024*1024*1024*1024)>5){
      return 'inv_size'; //size greater than 2 mb
   }else{
     $ext = pathinfo($image['name'], PATHINFO_EXTENSION);

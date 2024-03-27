@@ -32,5 +32,18 @@ input[type="number"] {
   border: 1px solid var(--teal_hover);
 }
 
+.custom-alert{
+  position: fixed;
+  top: 85px;
+  right: 25px;
+}
+
+@media screen and (max-width: 991px) {
+  .custom-alert{
+    position: fixed;
+    top: 130px !important;
+    right: 25px;
+  }
+}
 
 

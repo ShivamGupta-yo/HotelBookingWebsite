@@ -7,7 +7,7 @@
   <title>Room Rover-Home</title>
 
   <?php
-  require ('inc/links.php');
+  require('inc/links.php');
   ?>
 
   <!-- Swiper JS Library -->
@@ -38,7 +38,7 @@
 <body class="bg-light">
   <!-- header.php -->
   <?php
-  require ('inc/header.php');
+  require('inc/header.php');
   ?>
 
 
@@ -48,24 +48,19 @@
   <div class="container-fluid px-lg-4 mt-4">
     <div class="swiper swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="images/carousel/IMG_15372.png" class="w-100 d-block" />
+        <?php
+        $res = selectAll('carousel');
+        while ($row = mysqli_fetch_assoc($res)) {
+          $path = CAROUSEL_IMG_PATH;
+          echo <<<data
+          
+          <div class="swiper-slide">
+          <img src="$path$row[image]" class="w-100 d-block" />
         </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/IMG_55677.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images\carousel\IMG_40905.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/IMG_62045.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/IMG_93127.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/IMG_99736.png" class="w-100 d-block" />
-        </div>
+        data;
+        }
+        ?>
+       
       </div>
     </div>
   </div>
@@ -411,55 +406,52 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-        <iframe class="w-100 rounded"
-          src="<?php 
-          echo $contact_r['iframe'];
-          ?>"
-          height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="w-100 rounded" src="<?php
+                                            echo $contact_r['iframe'];
+                                            ?>" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="bg-white p-4 rounded mb-4">
           <h5>Call Us</h5>
-          <a href="tel: +<?php 
-          echo $contact_r['pn1'];
-          ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><i
-              class="bi bi-telephone-fill"></i> +<?php 
-          echo $contact_r['pn1'];
-          ?></a>
+          <a href="tel: +<?php
+                          echo $contact_r['pn1'];
+                          ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><i class="bi bi-telephone-fill"></i> +<?php
+                                                                                                                echo $contact_r['pn1'];
+                                                                                                                ?></a>
           <br />
-          <?php 
-          if($contact_r['pn2']!=''){
+          <?php
+          if ($contact_r['pn2'] != '') {
             echo <<<data
             <a href="tel: +$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
             <i class="bi bi-telephone-fill"></i> +$contact_r[pn2] </a>
             data;
           }
           ?>
-          
+
         </div>
 
 
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow Us</h5>
-          <a href="<?php 
-          echo $contact_r['insta'];
-          ?>" class="d-inline-block mb-3">
+          <a href="<?php
+                    echo $contact_r['insta'];
+                    ?>" class="d-inline-block mb-3">
             <span class="badge bg-light fs-6 p-2 text-dark">
               <i class="bi bi-instagram me-1"></i> Instagram
             </span>
           </a>
           <br />
-          <a href="<?php 
-          echo $contact_r['git'];
-          ?>" class="d-inline-block mb-3">
+          <a href="<?php
+                    echo $contact_r['git'];
+                    ?>" class="d-inline-block mb-3">
             <span class="badge bg-light fs-6 p-2 text-dark">
               <i class="bi bi-github"></i> Github
             </span>
           </a>
           <br />
-          <a href="<?php 
-          echo $contact_r['ln'];
-          ?>" class="d-inline-block">
+          <a href="<?php
+                    echo $contact_r['ln'];
+                    ?>" class="d-inline-block">
             <span class="badge bg-light fs-6 p-2 text-dark">
               <i class="bi bi-linkedin"></i> LinkedIn
             </span>
@@ -473,7 +465,7 @@
 
   <!-- footer.php -->
   <?php
-  require ("inc/footer.php");
+  require("inc/footer.php");
   ?>
 
 
