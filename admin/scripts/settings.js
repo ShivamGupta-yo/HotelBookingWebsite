@@ -18,14 +18,6 @@ general_s_form.addEventListener('submit', function(e) {
     upd_general(site_title_inp.value, site_about_inp.value);
 })
 
-
-
-
-
-
-
-
-
 function get_general() {
     let site_title = document.getElementById('site_title');
     let site_about = document.getElementById('site_about');
@@ -227,7 +219,7 @@ function add_member() {
             alert('error', 'Only jpg,jpeg and png images are allowed!');
 
         } else if (this.responseText == 'inv_size') {
-            alert('error', 'image should be less than 2MB!');
+            alert('error', 'image should be less than 5MB!');
 
         } else if (this.responseText == 'upd_failed') {
             alert('error', 'Failed to upload image!');

@@ -279,7 +279,7 @@
         </div>
       </div>
       <div class="col-lg-12 text-center mt-5">
-        <a href="" class="btn btn-sm btn-outline-dark rounded-0 fw-bold">More Rooms >>></a>
+        <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold">More Rooms >>></a>
       </div>
     </div>
   </div>
@@ -289,29 +289,29 @@
   <div class="container">
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-sm-5">
       <div class="col-lg-2 col-md-2 text-center bg-white shadow py-4 my-3">
-        <img src="./images/facilities/IMG_43553.svg" alt="" width="80px" />
-        <h5 class="mt-3">Wi-fi</h5>
+        <img src="./images/facilities/IMG_15378.svg" alt="" width="80px" />
+        <h5 class="mt-3">AC</h5>
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white shadow py-4 my-3">
-        <img src="./images/facilities/IMG_43553.svg" alt="" width="80px" />
-        <h5 class="mt-3">Wi-fi</h5>
+        <img src="./images/facilities/IMG_37719.svg" alt="" width="80px" />
+        <h5 class="mt-3">Cooler</h5>
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white shadow py-4 my-3">
-        <img src="./images/facilities/IMG_43553.svg" alt="" width="80px" />
-        <h5 class="mt-3">Wi-fi</h5>
+        <img src="./images/facilities/IMG_62613.svg" alt="" width="80px" />
+        <h5 class="mt-3">Wi-Fi</h5>
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white shadow py-4 my-3">
-        <img src="./images/facilities/IMG_43553.svg" alt="" width="80px" />
-        <h5 class="mt-3">Wi-fi</h5>
+        <img src="./images/facilities/IMG_75337.svg" alt="" width="80px" />
+        <h5 class="mt-3">Massage</h5>
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white shadow py-4 my-3">
-        <img src="./images/facilities/IMG_43553.svg" alt="" width="80px" />
-        <h5 class="mt-3">Wi-fi</h5>
+        <img src="./images/facilities/IMG_86997.svg" alt="" width="80px" />
+        <h5 class="mt-3">Parking</h5>
       </div>
 
       <!-- more facilities -->
       <div class="col-lg-12 text-center mt-5">
-        <a href="" class="btn btn-sm btn-outline-dark rounded-0 fw-bold">More Facilities >>></a>
+        <a href="facilities.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold">More Facilities >>></a>
       </div>
     </div>
   </div>

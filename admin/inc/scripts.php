@@ -14,6 +14,11 @@
   </div>
         `;
         document.body.append(element);
+        setTimeout(remAlert,1500);
+  }
+
+  function remAlert(){
+    document.getElementsByClassName('alert')[0].remove();
   }
 
   function setActive(){

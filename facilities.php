@@ -56,66 +56,28 @@
 
    <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
 
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
+    <?php 
+    $res = selectAll('facilities');
+    $path = FACILITIES_IMG_PATH;
+    while($row = mysqli_fetch_assoc($res)){
+      echo<<<data
       <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
+      <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
+        <div class="d-flex align-items-center mb-2">
 
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
-
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
-
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
-
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-5 px-4">
-        <div class=" pop bg-white shadow rounded border-top border-4 p-4 border-dark ">
-          <div class="d-flex align-items-center mb-2">
-
-            <img src="images/facilities/IMG_43553.svg" alt="" width="40px">
-            <h5 class="m-0 ms-3">Wi-fi</h5>
-          </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem deleniti fugit culpa iste, illo possimus.</p>
-          </div>
-      </div>
+          <img src="$path$row[icon]" alt="" width="40px">
+          <h5 class="m-0 ms-3">$row[name]</h5>
+        </div>
+          <p>$row[description]</p>
+        </div>
+    </div>
+    data;
+    }
+    
+    ?>
+     
+    
       
     </div>
    </div>
