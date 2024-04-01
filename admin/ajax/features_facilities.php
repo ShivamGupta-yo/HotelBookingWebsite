@@ -49,6 +49,7 @@ if (isset($_POST['rem_feature'])) {
        
     }else{
         echo 'room_added';
+        
     }
 
    

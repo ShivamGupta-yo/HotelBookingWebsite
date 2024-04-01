@@ -52,8 +52,7 @@ function update($sql, $values, $datatypes)
 {
     $con = $GLOBALS['con']; // to access above con variable
     if ($stmt = mysqli_prepare($con, $sql)) {
-        mysqli_stmt_bind_param($stmt, $datatypes, ...$values); //splat operater: ... it dynamically binds all the values to the stmt query
-
+        mysqli_stmt_bind_param($stmt,$datatypes, ...$values);
         if (mysqli_stmt_execute($stmt)) {
             $res = mysqli_stmt_affected_rows($stmt);
             mysqli_stmt_close($stmt);

@@ -276,6 +276,50 @@ adminLogin();
         </div>
     </div>
 
+    <!-- manage  room images  modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Room Name</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="image-alert">
+
+                    </div>
+                    <div class="border-bottom botder-3 pb-3 mb-3">
+                        <form id="add_image_form" action="">
+                            <label for="" class="form-label fw-bold">Add Image</label>
+                            <input type="file" name="image" accept=".jpg, .png, .webp, .jpeg" class="form-control mb-3" required>
+                            <button onclick="" class="btn custom-bg text-white shadow-none">ADD</button>
+                            <input type="hidden" name="room_id">
+                        </form>
+                    </div>
+                    <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
+                        <table class="table table-hover border-0 text-center">
+                            <thead>
+                                <tr class="bg-dark text-light sticky-top">
+                                    <th scope="col" width="60%">Image</th>
+                                    <th scope="col">Thumb</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="room-image-data">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 
 
     <?php
@@ -367,7 +411,7 @@ adminLogin();
         // edit room
         let edit_room_form = document.getElementById('edit_room_form');
 
-      
+
 
 
 
@@ -379,7 +423,7 @@ adminLogin();
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
             xhr.onload = function() {
-               console.log(JSON.parse(this.responseText));
+                console.log(JSON.parse(this.responseText));
                 let data = JSON.parse(this.responseText);
                 console.log(data.roomdata.name)
                 edit_room_form.elements['name'].value = data.roomdata.name;
@@ -407,7 +451,7 @@ adminLogin();
 
             };
 
-            xhr.send('get_room='+id);
+            xhr.send('get_room=' + id);
         }
 
 
@@ -419,7 +463,7 @@ adminLogin();
         function submit_edit_room() {
             let data = new FormData();
             data.append('edit_room', '');
-            data.append('room_id',edit_room_form.elements['room_id'].value );
+            data.append('room_id', edit_room_form.elements['room_id'].value);
             data.append('name', edit_room_form.elements['name'].value);
             data.append('area', edit_room_form.elements['area'].value);
             data.append('price', edit_room_form.elements['price'].value);
@@ -451,10 +495,10 @@ adminLogin();
 
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/rooms.php", true);
-           
+
 
             xhr.onload = function() {
-               
+
 
                 var myModal = document.getElementById('edit-room');
                 var modal = bootstrap.Modal.getInstance(myModal);
@@ -500,8 +544,158 @@ adminLogin();
         }
 
 
+        // Adding Image
 
 
+        let add_image_form = document.getElementById('add_image_form')
+        add_image_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            add_image();
+        })
+
+        function add_image() {
+            let data = new FormData();
+
+            data.append('image', add_image_form.elements['image'].files[0]);
+            data.append('room_id', add_image_form.elements['room_id'].value);
+
+            data.append('add_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/rooms.php", true);
+
+
+
+            xhr.onload = function() {
+                if (this.responseText == "inv_img") {
+                    alert('error', 'Only jpg,jpeg and png images are allowed!','image-alert');
+
+                } else if (this.responseText == 'inv_size') {
+                    alert('error', 'image should be less than 5MB!','image-alert');
+
+                } else if (this.responseText == 'upd_failed') {
+                    alert('error', 'Failed to upload image!','image-alert');
+                } else {
+                    alert('success', 'New Image Added!', 'image-alert');
+
+                    room_images(add_image_form.elements['room_id'].value, document.querySelector('#room-images .modal-title').innerText);
+                    add_image_form.reset();
+
+                }
+            }
+            xhr.send(data);
+        }
+
+        function room_images(id, rname) {
+            document.querySelector("#room-images .modal-title").innerText = rname;
+            add_image_form.elements['room_id'].value = id;
+            add_image_form.elements['image'].value = '';
+
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onload = function() {
+                document.getElementById('room-image-data').innerHTML = this.responseText;
+
+            };
+
+            xhr.send('get_room_images=' + id);
+        }
+
+
+        function rem_image(img_id, room_id) {
+            let data = new FormData();
+
+            data.append('image_id',img_id);
+            data.append('room_id', room_id);
+
+            data.append('rem_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/rooms.php", true);
+
+
+
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                   
+                    alert('success', 'Image Removed!', 'image-alert');
+
+                    room_images(room_id, document.querySelector('#room-images .modal-title').innerText);
+                }  else {
+                    alert('error','Image Removal failed!','image-alert');
+                    add_image_form.reset();
+
+                }
+            }
+            xhr.send(data);
+        }
+
+
+
+        function thumb_image(img_id, room_id) {
+            let data = new FormData();
+
+            data.append('image_id',img_id);
+            data.append('room_id', room_id);
+
+            data.append('thumb_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/rooms.php", true);
+
+
+
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                   
+                    alert('success', 'Image Thumbnail changed!', 'image-alert');
+
+                    room_images(room_id, document.querySelector('#room-images .modal-title').innerText);
+                }  else {
+                    alert('error','Thumbnail Update Failed!','image-alert');
+                    add_image_form.reset();
+
+                }
+            }
+            xhr.send(data);
+        }
+
+
+
+        function remove_room(room_id) {
+            if(confirm("Do you want to delete this room?")){
+
+                let data = new FormData();
+    
+                data.append('room_id',room_id);
+                data.append('remove_room', '');
+                let xhr = new XMLHttpRequest();
+            xhr.open('POST', "ajax/rooms.php", true);
+
+
+
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                   
+                    alert('success', 'Room Removed!');
+                    get_all_rooms();
+                   
+                }  else {
+                    alert('error','Room Removal failed!');
+                   
+
+                }
+            }
+            xhr.send(data);
+            }
+           
+
+
+           
+        }
 
 
         window.onload = function() {

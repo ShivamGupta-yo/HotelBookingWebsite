@@ -57,10 +57,8 @@ function rem_feature(val) {
     if (this.responseText == 1) {
       alert("success", "Feature Removed!");
       get_features();
-    } else if (this.responseText == "room_added") {
+    } else  {
       alert("error", "Feature already Present in the room");
-    } else {
-      alert("error", "Server down!");
     }
   };
   xhr.send("rem_feature=" + val);
@@ -126,11 +124,9 @@ function rem_facility(val) {
     if (this.responseText == 1) {
       alert("success", "Facility Removed!");
       get_facilities();
-    } else if (this.responseText == "room_added") {
-      alert("error", "Facility already Present in the room");
     } else {
-      alert("error", "Server down!");
-    }
+      alert("error", "Facility already Present in the room");
+    } 
   };
   xhr.send("rem_facility=" + val);
 }
