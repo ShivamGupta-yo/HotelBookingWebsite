@@ -4,6 +4,7 @@ require('admin/inc/essentials.php');
 
 
 $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+
 $values = [1];
 $contact_r = mysqli_fetch_assoc(select($contact_q,$values,'i'));
 
@@ -99,7 +100,7 @@ $name_r = mysqli_fetch_assoc(select($name_q,$values,'i'));
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Registration Form -->
-            <form>
+            <form id="register-form" autocomplete="off">
                 <div class="modal-header d-flex align-items-center">
                     <h5 class="modal-title d-flex align-items-center">
                         <i class="bi bi-person-add fs-3 me-2"></i>
@@ -116,41 +117,41 @@ $name_r = mysqli_fetch_assoc(select($name_q,$values,'i'));
                         <div class="row">
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Name:</label>
-                                <input type="text" class="form-control" />
+                                <input name="name" type="text" class="form-control" required/>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Email:</label>
-                                <input type="email" class="form-control" />
+                                <input name="email" type="email" class="form-control" required/>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Phone Number:</label>
-                                <input type="number" class="form-control" />
+                                <input name="phonenum" type="number" class="form-control" required/>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Picture:</label>
-                                <input type="file" class="form-control" />
+                                <input name="profile" type="file" class="form-control" accept=".jpg,.jpeg,.png" required/>
                             </div>
                             <div class="col-md-12 p-0 mb-3">
                                 <label class="form-label">Address:</label>
 
-                                <textarea class="form-control" rows="1"></textarea>
+                                <textarea name="address" class="form-control" rows="1" required></textarea>
                             </div>
 
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Pincode:</label>
-                                <input type="number" class="form-control" />
+                                <input  name="pincode" type="number" class="form-control" required/>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Date Of Birth:</label>
-                                <input type="date" class="form-control" />
+                                <input name="dob"  type="date" class="form-control" required/>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Set Password:</label>
-                                <input type="password" class="form-control" />
+                                <input name="pass"  type="password" class="form-control" required/>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Confirm Password:</label>
-                                <input type="password" class="form-control" />
+                                <input name="cpass" type="password" class="form-control" required/>
                             </div>
                         </div>
                     </div>

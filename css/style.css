@@ -36,6 +36,7 @@ input[type="number"] {
   position: fixed;
   top: 85px;
   right: 25px;
+  z-index: 11 !important;
 }
 
 @media screen and (max-width: 991px) {
@@ -43,6 +44,7 @@ input[type="number"] {
     position: fixed;
     top: 130px !important;
     right: 25px;
+    z-index: 11 !important;
   }
 }
 
