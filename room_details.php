@@ -173,9 +173,14 @@
                   </div>
       area;
 
-      echo<<<book
-      <a href="#" class="btn  text-white custom-bg mb-1 w-100">Book Now</a>
-      book;
+
+      $book_btn = '';
+          if(!$name_r['shutdown']){
+           
+            echo<<<book
+            <a href="#" class="btn  text-white custom-bg mb-1 w-100">Book Now</a>
+            book;
+          }
 
             ?>
           </div>

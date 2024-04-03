@@ -62,8 +62,7 @@ $name_r = mysqli_fetch_assoc(select($name_q, $values, 'i'));
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>
-
-function alert(type, msg,position='body') {
+  function alert(type, msg, position = 'body') {
     let bs_class = (type == 'success') ? 'alert-success' : 'alert-danger';
     let element = document.createElement('div');
     element.innerHTML = `
@@ -75,18 +74,17 @@ function alert(type, msg,position='body') {
   </div>
         `;
 
-        if(position=='body'){
+    if (position == 'body') {
 
-          document.body.append(element);
-          element.classList.add('custom-alert');
-        }
-        else{
-          document.getElementById(position).appendChild(element);
-        }
-        setTimeout(remAlert,1500);
+      document.body.append(element);
+      element.classList.add('custom-alert');
+    } else {
+      document.getElementById(position).appendChild(element);
+    }
+    setTimeout(remAlert, 1500);
   }
 
-  function remAlert(){
+  function remAlert() {
     document.getElementsByClassName('alert')[0].remove();
   }
 
@@ -126,31 +124,70 @@ function alert(type, msg,position='body') {
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "ajax/login_register.php", true);
-    
+
     xhr.onload = function() {
-      if(this.responseText=='pass_mismatch'){
-        alert('error','PASSWORDS DO NOT MATCH!');
-      }else if(this.responseText=='email_already'){
-        alert('error','Email is already registered');
+      if (this.responseText == 'pass_mismatch') {
+        alert('error', 'PASSWORDS DO NOT MATCH!');
+      } else if (this.responseText == 'email_already') {
+        alert('error', 'Email is already registered');
 
-      }else if(this.responseText=='phone_already'){
-        alert('error','Phone Number is already registered');
+      } else if (this.responseText == 'phone_already') {
+        alert('error', 'Phone Number is already registered');
 
-      }else if(this.responseText=='inv_img'){
-        alert('error','Only jpeg,png and jpg images are allowed');
+      } else if (this.responseText == 'inv_img') {
+        alert('error', 'Only jpeg,png and jpg images are allowed');
 
-      }else if(this.responseText=='upd_failed'){
-        alert('error','Image Upload failed');
+      } else if (this.responseText == 'upd_failed') {
+        alert('error', 'Image Upload failed');
 
-      }else if(this.responseText=='ins_failed'){
-        alert('error','Registration Failed');
+      } else if (this.responseText == 'ins_failed') {
+        alert('error', 'Registration Failed');
 
-      }else{
-        alert('success','Registered Successfully!');
+      } else {
+        alert('success', 'Registered Successfully!');
         register_form.reset();
       }
 
     };
+    xhr.send(data);
+  });
+
+  // login data
+  let login_form = document.getElementById('login-form');
+  login_form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let data = new FormData();
+    data.append('email_mob', login_form.elements['email_mob'].value);
+    data.append('pass', login_form.elements['pass'].value);
+
+
+    data.append('login', '');
+
+    var myModal = document.getElementById('loginModal');
+    var modal = bootstrap.Modal.getInstance(myModal);
+    modal.hide();
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "ajax/login_register.php", true);
+
+    xhr.onload = function() {
+      if (this.responseText == 'inv_email_mob') {
+        alert('error', 'Invalid Email or Mobile Number!');
+      } else if (this.responseText == 'not_verified') {
+        alert('error', 'Email is not verified!');
+
+      } else if (this.responseText == 'inactive') {
+        alert('error', 'Account Suspended! Please Contact Admin.');
+
+      } else if (this.responseText == 'invalid_pass') {
+        alert('error', 'Incorrect Password!');
+
+      } else {
+        window.location = window.location.pathname;
+
+      }
+
+    }
     xhr.send(data);
   });
 
