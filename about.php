@@ -41,20 +41,18 @@
   <div class="my-5 px-4">
     <h2 class="text-center fw-bold h-font">ABOUT US</h2>
     <div class="h-line bg-dark"></div>
-    <p class="text-center mt-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur enim sunt
-      praesentium nisi id ratione, ea debitis eveniet libero velit!</p>
+    <p class="text-center mt-3">Your perfect stay starts here. </p>
   </div>
 
 
   <div class="container">
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-        <h3 class="mb-3">Lorem ipsum dolor sit.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores, libero nulla minus odit vero
-          voluptatem!</p>
+        <h3 class="mb-3">Ankit Sharma & Shivam Gupta.</h3>
+        <p>We are passionate about travel and helping people find the perfect place to stay. Whether you're a business traveler seeking a comfortable work environment or a family on an adventure, we believe there's a hotel out there waiting to make your trip unforgettable.Feel free to contact us. </p>
       </div>
       <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-1 order-md-2">
-        <img src="images/about/about.jpg" class="w-100" alt="">
+        <img src="images/about/admin.jpg" width="500px" class="rounded shadow " height="400px" alt="">
 
 
       </div>

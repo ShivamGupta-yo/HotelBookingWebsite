@@ -13,7 +13,7 @@ if (isset($_POST['get_users'])) {
        if(!$row['status']){
         $status="<button onclick='toggle_status($row[id],1)' class='btn btn-danger btn-sm'>Banned</button>";
        }
-       $date=date('d-m-Y : H:m:s ',strtotime($row['datentime']));
+       $date=date('d-m-Y: H:m:s',strtotime($row['datentime']));
        $dob=date('d-m-Y',strtotime($row['dob']));
         echo <<<data
         <tr>

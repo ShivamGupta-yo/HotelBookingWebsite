@@ -55,7 +55,7 @@ adminLogin();
                                         <th scope="col">Location</th>
                                         <th scope="col">DOB</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Date</th>
+                                        <th scope="col">Date Of Registration</th>
                                         
                                     </tr>
                                 </thead>
