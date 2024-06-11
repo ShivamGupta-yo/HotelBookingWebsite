@@ -72,6 +72,6 @@ This is a hotel booking website developed using HTML, Bootstrap, and PHP. The pl
 ## Contact: 
 For any questions or inquiries, please contact shivam1234snr@gmail.com.
 
-## Thank you for checking out our Hotel Booking Website! We hope you find it useful for managing hotel bookings and administration.
+# Thank you for checking out our Hotel Booking Website! We hope you find it useful for managing hotel bookings and administration.
 
 
